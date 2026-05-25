@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Danke – KUNDE_NAME" description="Ihre Nachricht wurde erfolgreich gesendet.">
+  <Nav />
+  <main class="danke">
+    <div class="danke__inner">
+      <p class="danke__icon">✦</p>
+      <h1>Vielen Dank</h1>
+      <p class="danke__text">
+        Ihre Nachricht ist angekommen. Ich melde mich in Kürze bei Ihnen.
+      </p>
+      <a href="/" class="danke__back">← Zurück zur Startseite</a>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .danke {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sand);
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+  .danke__inner {
+    max-width: 480px;
+  }
+  .danke__icon {
+    font-size: 2rem;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+  .danke__text {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  .danke__back {
+    display: inline-block;
+    color: var(--terracotta);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .danke__back:hover { opacity: 0.7; }
+</style>

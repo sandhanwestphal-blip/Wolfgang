@@ -1,0 +1,207 @@
+---
+---
+<section class="kontakt" id="kontakt">
+  <div class="kontakt__inner">
+
+    <div class="kontakt__text">
+      <p class="kontakt__label">Kontakt</p>
+      <h2 class="kontakt__title">
+        Bereit für den<br /><em>nächsten Schritt?</em>
+      </h2>
+      <p class="kontakt__lead">
+        Ich biete Ihnen einen Raum, in dem Ihre Geschichte Platz hat —
+        ohne Wertung, mit voller Aufmerksamkeit. Das Erstgespräch ist
+        unverbindlich.
+      </p>
+
+      <div class="kontakt__info">
+        <div class="kontakt__row">
+          <span class="kontakt__icon">✉</span>
+          <a href="mailto:KUNDE_EMAIL">KUNDE_EMAIL</a>
+        </div>
+        <div class="kontakt__row">
+          <span class="kontakt__icon">☏</span>
+          <a href="tel:KUNDE_TEL">KUNDE_TEL</a>
+        </div>
+        <div class="kontakt__row">
+          <span class="kontakt__icon">⊙</span>
+          <span>KUNDE_ADRESSE, KUNDE_PLZ KUNDE_ORT</span>
+        </div>
+      </div>
+
+      <div class="kontakt__preise">
+        <p class="preise__title">Honorar</p>
+        <p>Einzelsitzung (60 min) — <strong>XX €</strong></p>
+        <p>Kennenlerngespräch — <strong>kostenlos</strong></p>
+      </div>
+    </div>
+
+    <form
+      class="kontakt__form"
+      action="https://api.web3forms.com/submit"
+      method="POST"
+    >
+      <input type="hidden" name="access_key" value="WEB3FORMS_KEY" />
+      <input type="hidden" name="redirect" value="https://KUNDE_URL/danke" />
+      <input type="checkbox" name="botcheck" style="display:none" />
+
+      <div class="form__group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required placeholder="Ihr Name" />
+      </div>
+      <div class="form__group">
+        <label for="email">E-Mail</label>
+        <input id="email" name="email" type="email" required placeholder="ihre@email.de" />
+      </div>
+      <div class="form__group">
+        <label for="nachricht">Nachricht</label>
+        <textarea id="nachricht" name="message" rows="5" required placeholder="Wie kann ich Ihnen helfen?"></textarea>
+      </div>
+
+      <button type="submit" class="form__btn">Nachricht senden</button>
+
+      <p class="form__hinweis">
+        Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage
+        verwendet. Weitere Informationen in der
+        <a href="/datenschutz/">Datenschutzerklärung</a>.
+      </p>
+    </form>
+
+  </div>
+</section>
+
+<style>
+  .kontakt {
+    background: var(--sand);
+    padding: 7rem 2rem;
+  }
+  .kontakt__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .kontakt__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+  }
+  .kontakt__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  .kontakt__title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .kontakt__lead {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .kontakt__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .kontakt__row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .kontakt__icon {
+    width: 20px;
+    color: var(--terracotta);
+    flex-shrink: 0;
+  }
+  .kontakt__row a { color: var(--text); }
+  .kontakt__row a:hover { color: var(--terracotta); }
+
+  .kontakt__preise {
+    background: var(--warm);
+    border-left: 3px solid var(--terracotta);
+    padding: 1.2rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .preise__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--deep);
+    margin-bottom: 0.4rem;
+  }
+
+  /* Form */
+  .kontakt__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .form__group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+  .form__group input,
+  .form__group textarea {
+    background: #fff;
+    border: 1px solid var(--warm);
+    padding: 0.75rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+    width: 100%;
+  }
+  .form__group input:focus,
+  .form__group textarea:focus {
+    border-color: var(--terracotta);
+  }
+
+  .form__btn {
+    align-self: flex-start;
+    padding: 0.85rem 2.2rem;
+    background: var(--terracotta);
+    color: #fff;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .form__btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+  .form__hinweis {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  .form__hinweis a { color: var(--terracotta); }
+
+  @media (max-width: 768px) {
+    .kontakt__inner { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>

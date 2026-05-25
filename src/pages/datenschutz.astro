@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Datenschutz – KUNDE_NAME"
+  description="Datenschutzerklärung von KUNDE_NAME."
+>
+  <Nav />
+  <main class="legal">
+    <div class="legal__inner">
+      <h1>Datenschutzerklärung</h1>
+
+      <h2>1. Verantwortliche Person</h2>
+      <p>
+        KUNDE_NAME<br />
+        KUNDE_ADRESSE, KUNDE_PLZ KUNDE_ORT<br />
+        E-Mail: <a href="mailto:KUNDE_EMAIL">KUNDE_EMAIL</a>
+      </p>
+
+      <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+      <p>
+        Ich erhebe personenbezogene Daten nur, wenn Sie mir diese im Rahmen
+        einer Kontaktaufnahme freiwillig mitteilen (z. B. Name, E-Mail-Adresse,
+        Nachricht). Diese Daten werden ausschließlich zur Bearbeitung Ihrer
+        Anfrage verwendet und nicht an Dritte weitergegeben.
+      </p>
+
+      <h2>3. Kontaktformular</h2>
+      <p>
+        Das Kontaktformular dieser Website wird über den Dienst
+        <a href="https://web3forms.com" target="_blank" rel="noopener">web3forms</a>
+        verarbeitet. Ihre Eingaben werden verschlüsselt übertragen.
+        Bitte beachten Sie die
+        <a href="https://web3forms.com/privacy" target="_blank" rel="noopener">Datenschutzbestimmungen von web3forms</a>.
+      </p>
+
+      <h2>4. Hosting</h2>
+      <p>
+        Diese Website wird über Cloudflare Pages gehostet. Cloudflare kann
+        beim Aufruf der Seite technische Daten (z. B. IP-Adresse) verarbeiten.
+        Weitere Informationen finden Sie in der
+        <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung von Cloudflare</a>.
+      </p>
+
+      <h2>5. Ihre Rechte</h2>
+      <p>
+        Sie haben das Recht auf Auskunft, Berichtigung, Löschung und
+        Einschränkung der Verarbeitung Ihrer gespeicherten Daten sowie das
+        Recht auf Datenübertragbarkeit. Wenden Sie sich dazu per E-Mail an
+        <a href="mailto:KUNDE_EMAIL">KUNDE_EMAIL</a>.
+      </p>
+
+      <h2>6. Keine Cookies / Tracking</h2>
+      <p>
+        Diese Website setzt keine Tracking-Cookies und verwendet keine
+        Analyse- oder Werbedienste (kein Google Analytics, kein Facebook Pixel
+        o. ä.).
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal {
+    background: var(--sand);
+    padding: 6rem 1.5rem 5rem;
+  }
+  .legal__inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--deep);
+    margin-bottom: 2.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+    color: var(--terracotta);
+    margin: 2rem 0 0.5rem;
+  }
+  p {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+  }
+  a { color: var(--terracotta); }
+  a:hover { text-decoration: underline; }
+</style>

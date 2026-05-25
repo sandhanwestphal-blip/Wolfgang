@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Impressum – KUNDE_NAME"
+  description="Impressum und rechtliche Angaben von KUNDE_NAME, KUNDE_BERUF in KUNDE_ORT."
+>
+  <Nav />
+  <main class="legal">
+    <div class="legal__inner">
+      <h1>Impressum</h1>
+
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>
+        KUNDE_NAME<br />
+        KUNDE_BERUF<br />
+        KUNDE_ADRESSE<br />
+        KUNDE_PLZ KUNDE_ORT
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: <a href="tel:KUNDE_TEL">KUNDE_TEL</a><br />
+        E-Mail: <a href="mailto:KUNDE_EMAIL">KUNDE_EMAIL</a>
+      </p>
+
+      <h2>Haftungsausschluss</h2>
+      <p>
+        Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt.
+        Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte wird
+        keine Gewähr übernommen. Als Diensteanbieter bin ich für eigene Inhalte
+        nach § 7 Abs. 1 TMG verantwortlich. Für externe Links übernehme ich
+        keine Haftung.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Die auf dieser Website veröffentlichten Inhalte unterliegen dem
+        deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung
+        und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts
+        bedürfen der schriftlichen Zustimmung des Autors.
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal {
+    background: var(--sand);
+    padding: 6rem 1.5rem 5rem;
+  }
+  .legal__inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--deep);
+    margin-bottom: 2.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+    color: var(--terracotta);
+    margin: 2rem 0 0.5rem;
+  }
+  p {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+  }
+  a { color: var(--terracotta); }
+  a:hover { text-decoration: underline; }
+</style>

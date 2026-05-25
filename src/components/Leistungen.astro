@@ -1,0 +1,123 @@
+---
+const leistungen = [
+  {
+    kategorie: "Kategorie 1",
+    titel: "Erste Leistung",
+    items: ["Methode A", "Methode B", "Methode C"],
+  },
+  {
+    kategorie: "Kategorie 2",
+    titel: "Zweite Leistung",
+    items: ["Methode D", "Methode E", "Methode F"],
+  },
+  {
+    kategorie: "Kategorie 3",
+    titel: "Dritte Leistung",
+    items: ["Methode G", "Methode H", "Methode I"],
+  },
+  {
+    kategorie: "Kategorie 4",
+    titel: "Vierte Leistung",
+    items: ["Methode J", "Methode K", "Methode L"],
+  },
+];
+---
+
+<section class="leistungen" id="leistungen">
+  <div class="leistungen__inner">
+    <div class="leistungen__header">
+      <p class="leistungen__label">Angebot</p>
+      <h2 class="leistungen__title">Leistungen & Methoden</h2>
+      <p class="leistungen__subtitle">
+        Kurze Beschreibung Ihres ganzheitlichen Ansatzes und was Klienten
+        bei Ihnen erwartet.
+      </p>
+    </div>
+
+    <div class="leistungen__grid">
+      {leistungen.map((item) => (
+        <div class="leistungen__card">
+          <p class="card__kategorie">{item.kategorie}</p>
+          <h3 class="card__titel">{item.titel}</h3>
+          <ul class="card__list">
+            {item.items.map((i) => <li>{i}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .leistungen {
+    background: var(--sand);
+    padding: 7rem 2rem;
+  }
+  .leistungen__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .leistungen__header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 4rem;
+  }
+  .leistungen__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+  }
+  .leistungen__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+  .leistungen__subtitle {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .leistungen__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .leistungen__card {
+    background: var(--warm);
+    padding: 2rem;
+    border-top: 2px solid var(--terracotta);
+  }
+  .card__kategorie {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.6rem;
+  }
+  .card__titel {
+    font-size: 1.3rem;
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+  .card__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .card__list li {
+    font-size: 0.88rem;
+    color: var(--text);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .card__list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+  }
+</style>

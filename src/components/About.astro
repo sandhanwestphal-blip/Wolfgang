@@ -1,0 +1,123 @@
+---
+---
+<section class="about" id="about">
+  <div class="about__inner">
+
+    <div class="about__image">
+      <!-- Optional second photo or leave empty -->
+      <div class="about__image-bg"></div>
+    </div>
+
+    <div class="about__content">
+      <p class="about__label">Über mich</p>
+      <h2 class="about__title">Ein Leben im Zeichen von<br /><em>KUNDE_THEMA</em></h2>
+
+      <div class="about__body">
+        <p>
+          Beschreiben Sie hier Ihren Werdegang, Ihre Motivation und was Sie
+          antreibt. Was hat Sie zu Ihrem heutigen Beruf geführt? Welche
+          Erfahrungen prägen Ihre Arbeit?
+        </p>
+        <p>
+          Ein zweiter Absatz kann Ihre Philosophie oder Ihre Herangehensweise
+          an die Arbeit mit Klienten beschreiben.
+        </p>
+      </div>
+
+      <div class="about__timeline">
+        <div class="about__entry">
+          <span class="about__year">JAHR</span>
+          <p>Erste wichtige Station oder Ausbildung</p>
+        </div>
+        <div class="about__entry">
+          <span class="about__year">JAHR</span>
+          <p>Weitere bedeutende Erfahrung oder Weiterbildung</p>
+        </div>
+        <div class="about__entry">
+          <span class="about__year">JAHR</span>
+          <p>Beginn der selbständigen Tätigkeit in KUNDE_ORT</p>
+        </div>
+        <div class="about__entry">
+          <span class="about__year">Heute</span>
+          <p>Aktuelle Tätigkeit als KUNDE_BERUF</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--warm);
+    padding: 7rem 2rem;
+  }
+  .about__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about__image-bg {
+    aspect-ratio: 3/4;
+    background: var(--sand);
+    opacity: 0.6;
+  }
+
+  .about__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+  }
+  .about__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--deep);
+    margin-bottom: 2rem;
+    line-height: 1.25;
+  }
+  .about__title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .about__body p {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .about__timeline {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--warm);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .about__entry {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .about__year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--terracotta);
+    padding-top: 2px;
+  }
+  .about__entry p {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .about__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about__image { display: none; }
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "KUNDE_NAME – KUNDE_BERUF | KUNDE_ORT",
+  description = "KUNDE_BERUF in KUNDE_ORT. Professionelle Beratung und Begleitung.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="KUNDE_NAME" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://KUNDE_URL/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://KUNDE_URL/" />
+    <meta property="og:title" content="KUNDE_NAME – KUNDE_BERUF" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://KUNDE_URL/og-image.jpg" />
+    <meta property="og:image:alt" content="KUNDE_NAME – KUNDE_BERUF KUNDE_ORT" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="KUNDE_NAME" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KUNDE_NAME – KUNDE_BERUF" />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://KUNDE_URL/og-image.jpg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "KUNDE_NAME",
+        "url": "https://KUNDE_URL/",
+        "jobTitle": "KUNDE_BERUF",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "KUNDE_ADRESSE",
+          "addressLocality": "KUNDE_ORT",
+          "postalCode": "KUNDE_PLZ",
+          "addressCountry": "DE"
+        },
+        "telephone": "KUNDE_TEL",
+        "email": "KUNDE_EMAIL"
+      }
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --sand: #f5efe6;
+    --warm: #e8ddd0;
+    --terracotta: #c17f5a;
+    --deep: #1a1410;
+    --text: #3d2f25;
+    --text-light: #7a6555;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--text);
+    background-color: var(--sand);
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+</style>
