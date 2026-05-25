@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://KUNDE_URL',
+  site: 'https://sandhanwestphal-blip.github.io',
+  base: '/Wolfgang',
 });
