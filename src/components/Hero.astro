@@ -14,7 +14,15 @@
       <a href="#kontakt" class="hero__cta">Kontakt aufnehmen</a>
     </div>
     <div class="hero__image">
-      <img src="/Wolfgang.png" alt="Dr. Wolfgang Westphal – Germanist und DaF/DaZ-Experte" />
+      <img
+        src="/Wolfgang.jpg"
+        alt="Dr. Wolfgang Westphal – Germanist und DaF/DaZ-Experte"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="hero__monogram" style="display:none">
+        <span class="monogram__initials">W·W</span>
+        <span class="monogram__title">Dr. phil.</span>
+      </div>
     </div>
   </div>
 </section>
@@ -98,6 +106,32 @@
     aspect-ratio: 3/4;
     object-fit: cover;
     object-position: top;
+  }
+
+  /* Fallback monogram shown when photo is missing */
+  .hero__monogram {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--warm);
+    border: 1px solid rgba(193,127,90,0.2);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .monogram__initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    color: var(--terracotta);
+    letter-spacing: 0.15em;
+    line-height: 1;
+  }
+  .monogram__title {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-light);
   }
 
   @media (max-width: 768px) {
