@@ -5,8 +5,8 @@ interface Props {
 }
 
 const {
-  title = "KUNDE_NAME – KUNDE_BERUF | KUNDE_ORT",
-  description = "KUNDE_BERUF in KUNDE_ORT. Professionelle Beratung und Begleitung.",
+  title = "Dr. Wolfgang Westphal – Germanist & DaF/DaZ-Experte | Borken",
+  description = "Dr. Wolfgang Westphal – Germanist, DaF/DaZ-Experte und zertifizierter Telc/G.A.S.T.-Prüfer in Borken, Westfalen. Integrationskurse, Berufssprachkurse, Fachsprachenunterricht.",
 } = Astro.props;
 ---
 
@@ -19,28 +19,28 @@ const {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="author" content="KUNDE_NAME" />
+    <meta name="author" content="Dr. Wolfgang Westphal" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://KUNDE_URL/" />
+    <link rel="canonical" href="https://sandhanwestphal-blip.github.io/Wolfgang/" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://KUNDE_URL/" />
-    <meta property="og:title" content="KUNDE_NAME – KUNDE_BERUF" />
+    <meta property="og:url" content="https://sandhanwestphal-blip.github.io/Wolfgang/" />
+    <meta property="og:title" content="Dr. Wolfgang Westphal – Germanist & DaF/DaZ-Experte" />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://KUNDE_URL/og-image.jpg" />
-    <meta property="og:image:alt" content="KUNDE_NAME – KUNDE_BERUF KUNDE_ORT" />
+    <meta property="og:image" content="https://sandhanwestphal-blip.github.io/Wolfgang/Wolfgang.png" />
+    <meta property="og:image:alt" content="Dr. Wolfgang Westphal – Germanist & DaF/DaZ-Experte, Borken" />
     <meta property="og:locale" content="de_DE" />
-    <meta property="og:site_name" content="KUNDE_NAME" />
+    <meta property="og:site_name" content="Dr. Wolfgang Westphal" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="KUNDE_NAME – KUNDE_BERUF" />
+    <meta name="twitter:title" content="Dr. Wolfgang Westphal – Germanist & DaF/DaZ-Experte" />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://KUNDE_URL/og-image.jpg" />
+    <meta name="twitter:image" content="https://sandhanwestphal-blip.github.io/Wolfgang/Wolfgang.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,18 +55,18 @@ const {
       {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "KUNDE_NAME",
-        "url": "https://KUNDE_URL/",
-        "jobTitle": "KUNDE_BERUF",
+        "name": "Dr. Wolfgang Westphal",
+        "url": "https://sandhanwestphal-blip.github.io/Wolfgang/",
+        "jobTitle": "Germanist & DaF/DaZ-Experte",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "KUNDE_ADRESSE",
-          "addressLocality": "KUNDE_ORT",
-          "postalCode": "KUNDE_PLZ",
+          "streetAddress": "Lange Stiege 2",
+          "addressLocality": "Borken",
+          "postalCode": "46325",
           "addressCountry": "DE"
         },
-        "telephone": "KUNDE_TEL",
-        "email": "KUNDE_EMAIL"
+        "telephone": "+49-177-8201054",
+        "email": "redwest@web.de"
       }
     </script>
   </head>
