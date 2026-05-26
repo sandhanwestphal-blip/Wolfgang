@@ -11,6 +11,11 @@
         <blockquote>„Sprache ist das Medium, in dem Menschen Zugang zur Gesellschaft, zur Arbeit und zu sich selbst finden."</blockquote>
         <cite>Dr. Wolfgang Westphal</cite>
       </div>
+      <div class="hero__badges">
+        <span class="hero__badge">Dr. phil. · HHU Düsseldorf</span>
+        <span class="hero__badge">Telc/G.A.S.T.-Prüfer</span>
+        <span class="hero__badge">20+ Jahre DaF/DaZ</span>
+      </div>
       <a href="#kontakt" class="hero__cta">Kontakt aufnehmen</a>
     </div>
     <div class="hero__image">
@@ -65,7 +70,7 @@
   .hero__quote {
     border-left: 2px solid var(--terracotta);
     padding-left: 1.2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.8rem;
     animation: fadeUp 0.8s 0.2s ease both;
   }
   .hero__quote blockquote {
@@ -83,6 +88,23 @@
     text-transform: uppercase;
     color: var(--terracotta);
     font-style: normal;
+  }
+
+  .hero__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s 0.25s ease both;
+  }
+  .hero__badge {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    border: 1px solid var(--warm);
+    padding: 0.35rem 0.75rem;
+    background: rgba(255,255,255,0.4);
   }
 
   .hero__cta {

@@ -1,0 +1,119 @@
+---
+const publikationen = [
+  {
+    typ: "Dissertation",
+    name: "\"Karoline von Günderrode und Naturdenken um 1800\"",
+    details: "Dr. phil., Heinrich-Heine-Universität Düsseldorf, 1995. Beitrag zur literaturwissenschaftlichen Forschung der deutschen Frühromantik am Schnittpunkt von Natur, Sprache und Weltbild.",
+  },
+  {
+    typ: "Lehrveranstaltung",
+    name: "Seminare zur Naturlyrik der Goethezeit",
+    details: "Germanistisches Seminar der HHU Düsseldorf, Lehrstuhl Prof. Dr. Herbert Anton, 1988. Wissenschaftliche Lehre in der Germanistik auf Universitätsniveau.",
+  },
+  {
+    typ: "Internationale Weiterbildung",
+    name: "Internationales Deutschlehrerkolleg der Robert-Bosch-Stiftung",
+    details: "Wissenschaftliche Leitung des vierwöchigen Programms für internationale Deutschlehrkräfte, Akademie Klausenhof, Dingden, 1999.",
+  },
+  {
+    typ: "Redaktion & Verlag",
+    name: "Bücher und Printprodukte zur Welt- und Zeitgeschichte",
+    details: "Freischaffender Redakteur für Bertelsmann Verlag, Chronik Verlag Gütersloh, Harenberg Verlag Dortmund und Verlagsgruppe Handelsblatt, 1996–2005.",
+  },
+  {
+    typ: "Publizistik",
+    name: "\"Düsseldorfer Musikzeitung\"",
+    details: "Mitherausgeber und verantwortlicher Redakteur der monatlich erscheinenden Illustrierten, Düsseldorf, 1981–1982.",
+  },
+  {
+    typ: "Fachdidaktik",
+    name: "Seminare \"Korrigieren – Redigieren – Lektorieren\"",
+    details: "Entwicklung und Durchführung von Seminarsequenzen für den Ernst Klett Verlag für Wirtschafts- und Bildungsservice GmbH, Düsseldorf, ab 1995.",
+  },
+];
+---
+
+<section class="publikationen" id="publikationen">
+  <div class="pub__inner">
+    <div class="pub__header">
+      <p class="pub__label">Wissenschaft &amp; Publikationen</p>
+      <h2 class="pub__title">Akademisches Profil</h2>
+      <p class="pub__subtitle">
+        Germanistische Forschung am Schnittpunkt von Natur, Sprache und Weltbild —
+        mit einem direkten Faden zur deutschsprachigen Universitätsgermanistik.
+      </p>
+    </div>
+    <div class="pub__grid">
+      {publikationen.map((p) => (
+        <div class="pub__item">
+          <p class="pub__typ">{p.typ}</p>
+          <p class="pub__name">{p.name}</p>
+          <p class="pub__details">{p.details}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .publikationen {
+    background: var(--warm);
+    padding: 7rem 2rem;
+  }
+  .pub__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .pub__header {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 4rem;
+  }
+  .pub__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+  }
+  .pub__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+  .pub__subtitle {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .pub__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .pub__item {
+    background: var(--sand);
+    padding: 2rem;
+    border-left: 3px solid var(--terracotta);
+  }
+  .pub__typ {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.6rem;
+  }
+  .pub__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+  .pub__details {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.65;
+  }
+</style>
