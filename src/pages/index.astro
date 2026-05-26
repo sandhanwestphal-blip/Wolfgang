@@ -1,22 +1,1101 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Leistungen from '../components/Leistungen.astro';
-import Publikationen from '../components/Publikationen.astro';
-import Kontakt from '../components/Kontakt.astro';
-import Footer from '../components/Footer.astro';
----
+---<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Wolfgang Westphal – Germanist &amp; DaF/DaZ-Experte | Borken</title>
+  <meta name="description" content="Dr. Wolfgang Westphal – Germanist, DaF/DaZ-Experte und zertifizierter Telc/G.A.S.T.-Prüfer in Borken, Westfalen. Integrationskurse, Berufssprachkurse, Fachsprachenunterricht." />
+  <meta name="author" content="Dr. Wolfgang Westphal" />
 
-<Layout>
-  <Nav />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dr. Wolfgang Westphal – Germanist &amp; DaF/DaZ-Experte" />
+  <meta property="og:description" content="Germanist, DaF/DaZ-Experte und zertifizierter Telc/G.A.S.T.-Prüfer in Borken, Westfalen." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/sandhanwestphal-blip/Wolfgang/main/Wolfgang.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dr. Wolfgang Westphal",
+    "jobTitle": "Germanist & DaF/DaZ-Experte",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lange Stiege 2",
+      "addressLocality": "Borken",
+      "postalCode": "46325",
+      "addressCountry": "DE"
+    },
+    "telephone": "+49-177-8201054",
+    "email": "redwest@web.de"
+  }
+  </script>
+
+  <style>
+    /* ─── Reset & Tokens ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:       #f5efe6;
+      --warm:       #e8ddd0;
+      --terracotta: #c17f5a;
+      --deep:       #1a1410;
+      --text:       #3d2f25;
+      --text-light: #7a6555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background-color: var(--sand);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ─── Navigation ─────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245, 239, 230, 0.93);
+      backdrop-filter: blur(8px);
+      transition: box-shadow 0.3s;
+    }
+    .nav--scrolled { box-shadow: 0 1px 12px rgba(26,20,16,0.08); }
+
+    .nav__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--deep);
+      letter-spacing: 0.04em;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .nav__links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .nav__links a:hover { color: var(--terracotta); }
+
+    .nav__burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav__burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--deep);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav__mobile {
+      display: none;
+      flex-direction: column;
+      background: var(--sand);
+      border-top: 1px solid var(--warm);
+      padding: 1rem 2rem 1.5rem;
+      gap: 1rem;
+    }
+    .nav__mobile.is-open { display: flex; }
+    .nav__mobile a {
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      padding: 0.4rem 0;
+    }
+
+    @media (max-width: 680px) {
+      .nav__links { display: none; }
+      .nav__burger { display: flex; }
+    }
+
+    /* ─── Hero ───────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      padding: 7rem 2rem 4rem;
+    }
+
+    .hero__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero__label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero__title {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      color: var(--deep);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero__quote {
+      border-left: 2px solid var(--terracotta);
+      padding-left: 1.2rem;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero__quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .hero__quote cite {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-style: normal;
+    }
+
+    .hero__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s 0.25s ease both;
+    }
+    .hero__badge {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      border: 1px solid var(--warm);
+      padding: 0.35rem 0.75rem;
+      background: rgba(255,255,255,0.4);
+    }
+
+    .hero__cta {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.2s;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero__cta:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .hero__image {
+      animation: fadeIn 1s 0.4s ease both;
+    }
+    .hero__image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .hero__monogram {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--warm);
+      border: 1px solid rgba(193,127,90,0.2);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+    .monogram__initials {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300;
+      color: var(--terracotta);
+      letter-spacing: 0.15em;
+      line-height: 1;
+    }
+    .monogram__title {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 768px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .hero__image { order: -1; max-width: 320px; margin: 0 auto; width: 100%; }
+    }
+
+    /* ─── About ──────────────────────────────────────────── */
+    .about {
+      background: var(--warm);
+      padding: 7rem 2rem;
+    }
+    .about__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about__image { position: relative; }
+    .about__image-bg {
+      aspect-ratio: 3/4;
+      background: var(--sand);
+      opacity: 0.6;
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      right: -1.5rem;
+      bottom: -1.5rem;
+    }
+    .about__photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .about__label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+    .about__title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--deep);
+      margin-bottom: 2rem;
+      line-height: 1.25;
+    }
+    .about__title em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+    .about__body p {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .about__timeline {
+      margin-top: 2.5rem;
+      border-top: 1px solid rgba(193,127,90,0.2);
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .about__entry {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .about__year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--terracotta);
+      padding-top: 2px;
+    }
+    .about__entry p {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .about__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about__image { display: none; }
+    }
+
+    /* ─── Leistungen ─────────────────────────────────────── */
+    .leistungen {
+      background: var(--sand);
+      padding: 7rem 2rem;
+    }
+    .leistungen__inner { max-width: 1100px; margin: 0 auto; }
+    .leistungen__header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 4rem;
+    }
+    .leistungen__label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+    .leistungen__title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--deep);
+      margin-bottom: 1rem;
+    }
+    .leistungen__subtitle {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .leistungen__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .leistungen__card {
+      background: var(--warm);
+      padding: 2rem;
+      border-top: 2px solid var(--terracotta);
+    }
+    .card__kategorie {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.6rem;
+    }
+    .card__titel {
+      font-size: 1.3rem;
+      color: var(--deep);
+      margin-bottom: 1rem;
+    }
+    .card__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .card__list li {
+      font-size: 0.88rem;
+      color: var(--text);
+      padding-left: 1rem;
+      position: relative;
+    }
+    .card__list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--terracotta);
+    }
+
+    /* ─── Publikationen ──────────────────────────────────── */
+    .publikationen {
+      background: var(--warm);
+      padding: 7rem 2rem;
+    }
+    .publikationen__inner { max-width: 1100px; margin: 0 auto; }
+    .publikationen__header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 4rem;
+    }
+    .pub__label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+    .pub__title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--deep);
+      margin-bottom: 1rem;
+    }
+    .pub__subtitle {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .pub__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .pub__item {
+      background: var(--sand);
+      padding: 2rem;
+      border-left: 3px solid var(--terracotta);
+    }
+    .pub__typ {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.6rem;
+    }
+    .pub__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--deep);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .pub__details {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ─── Kontakt ────────────────────────────────────────── */
+    .kontakt {
+      background: var(--sand);
+      padding: 7rem 2rem;
+    }
+    .kontakt__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .kontakt__label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+    .kontakt__title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--deep);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .kontakt__title em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+    .kontakt__lead {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .kontakt__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+    .kontakt__row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .kontakt__icon {
+      width: 20px;
+      color: var(--terracotta);
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+    .kontakt__row a { color: var(--text); }
+    .kontakt__row a:hover { color: var(--terracotta); }
+
+    .kontakt__preise {
+      background: var(--warm);
+      border-left: 3px solid var(--terracotta);
+      padding: 1.2rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .preise__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--deep);
+      margin-bottom: 0.4rem;
+    }
+
+    .kontakt__form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .form__group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form__group label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .form__group input,
+    .form__group textarea {
+      background: #fff;
+      border: 1px solid var(--warm);
+      padding: 0.75rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+      width: 100%;
+    }
+    .form__group input:focus,
+    .form__group textarea:focus {
+      border-color: var(--terracotta);
+    }
+
+    .form__btn {
+      align-self: flex-start;
+      padding: 0.85rem 2.2rem;
+      background: var(--terracotta);
+      color: #fff;
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .form__btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .form__hinweis {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .form__hinweis a { color: var(--terracotta); }
+
+    @media (max-width: 768px) {
+      .kontakt__inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    .footer {
+      background: var(--deep);
+      color: rgba(245,239,230,0.6);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer__inner {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .footer__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--sand);
+      letter-spacing: 0.05em;
+    }
+    .footer__beruf {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.5rem;
+    }
+    .footer__nav {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0.5rem 0;
+    }
+    .footer__nav a {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: rgba(245,239,230,0.5);
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer__nav a:hover { color: var(--sand); }
+    .footer__copy {
+      font-size: 0.72rem;
+      margin-top: 0.5rem;
+      opacity: 0.4;
+    }
+
+    /* ─── Divider ────────────────────────────────────────── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--terracotta), transparent);
+      opacity: 0.25;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ══════════════════════════════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">Dr. Wolfgang Westphal</a>
+      <nav class="nav__links">
+        <a href="#about">Über mich</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#publikationen">Publikationen</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu" aria-hidden="true">
+      <a href="#about"          onclick="closeMobile()">Über mich</a>
+      <a href="#leistungen"     onclick="closeMobile()">Leistungen</a>
+      <a href="#publikationen"  onclick="closeMobile()">Publikationen</a>
+      <a href="#kontakt"        onclick="closeMobile()">Kontakt</a>
+    </div>
+  </header>
+
   <main>
-    <Hero />
-    <About />
-    <Leistungen />
-    <Publikationen />
-    <Kontakt />
+
+    <!-- ═══ HERO ════════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="hero__label">Germanist · DaF/DaZ-Experte · Borken, Westfalen</p>
+          <h1 class="hero__title">Dr. Wolfgang<br>Westphal</h1>
+          <div class="hero__quote">
+            <blockquote>„Sprache ist das Medium, in dem Menschen Zugang zur Gesellschaft, zur Arbeit und zu sich selbst finden."</blockquote>
+            <cite>Dr. Wolfgang Westphal</cite>
+          </div>
+          <div class="hero__badges">
+            <span class="hero__badge">Dr. phil. · HHU Düsseldorf</span>
+            <span class="hero__badge">Telc/G.A.S.T.-Prüfer</span>
+            <span class="hero__badge">20+ Jahre DaF/DaZ</span>
+          </div>
+          <a href="#kontakt" class="hero__cta">Kontakt aufnehmen</a>
+        </div>
+        <div class="hero__image">
+          <img
+            src="./wolfgang_web.jpg"
+            alt="Dr. Wolfgang Westphal – Germanist und DaF/DaZ-Experte"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="hero__monogram">
+            <span class="monogram__initials">W·W</span>
+            <span class="monogram__title">Dr. phil.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ ABOUT ════════════════════════════════════════════ -->
+    <section class="about" id="about">
+      <div class="about__inner">
+        <div class="about__image">
+          <div class="about__image-bg"></div>
+          <img
+            src="./wolfgang_web.jpg"
+            alt="Dr. Wolfgang Westphal"
+            class="about__photo"
+            onerror="this.style.display='none';"
+          />
+        </div>
+        <div class="about__content">
+          <p class="about__label">Über mich</p>
+          <h2 class="about__title">Ein Leben im Zeichen von<br><em>Sprache &amp; Bildung</em></h2>
+
+          <div class="about__body">
+            <p>
+              Sprache zu vermitteln ist seit über zwei Jahrzehnten meine Leidenschaft. Als
+              promovierter Germanist, erfahrener DaF- und DaZ-Dozent sowie zertifizierter
+              Prüfer bringe ich fundiertes Fachwissen, viel Geduld und echte Begeisterung mit —
+              ob in klassischen Integrationskursen, im Fachsprachenunterricht mit
+              Assistenzärzten oder beim kontextbezogenen Lernen in Berufssprachkursen.
+            </p>
+            <p>
+              Dr. Westphal vereint, was nur selten zusammenkommt: die analytische Tiefe eines
+              promovierten Philologen und die gelebte Praxis eines Lehrers, der täglich mit
+              Menschen arbeitet. Sein Unterrichtsstil folgt dem kommunikativen Ansatz —
+              Lernende gestalten ihren Stoff aktiv mit, Sprache wird zum handlungsorientierten
+              Erlebnis: interessant, spontan und wirkungsvoll.
+            </p>
+          </div>
+
+          <div class="about__timeline">
+            <div class="about__entry">
+              <span class="about__year">1954</span>
+              <p>Geboren in Düsseldorf; Sozialwissenschaftliches Abitur 1974, Berufsmusiker (Bassgitarre) und Mitherausgeber der „Düsseldorfer Musikzeitung"</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">1978</span>
+              <p>Studienbeginn Germanistik, Pädagogik und Philosophie an der Heinrich-Heine-Universität Düsseldorf</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">1986</span>
+              <p>Magister Artium (M.A.) an der HHU Düsseldorf; Schwerpunkte: Deutsche Frühromantik, Etymologie des Deutschen, Existentialismus</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">1988</span>
+              <p>Dozent am Germanistischen Seminar der HHU Düsseldorf (Lehrstuhl Prof. Dr. Herbert Anton), Seminare zur Naturlyrik der Goethezeit</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">1995</span>
+              <p>Promotion zum Dr. phil. (HHU Düsseldorf): „Karoline von Günderrode und Naturdenken um 1800"; Ausbildung zum Fachzeitschriften-Redakteur beim Ernst Klett Verlag</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">1996</span>
+              <p>Freischaffender Redakteur für Bertelsmann Verlag, Chronik Verlag Gütersloh, Harenberg Verlag Dortmund — Bücher und Printprodukte zur Welt- und Zeitgeschichte</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">1999</span>
+              <p>Wissenschaftliche Leitung des Internationalen Deutschlehrerkollegs der Robert-Bosch-Stiftung, Akademie Klausenhof, Dingden</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">2005</span>
+              <p>Dozent und Kursleiter an der VHS Bocholt und beim DRK Borken für BAMF-zugelassene Integrations- und Berufssprachkurse (A2 bis B2 Beruf)</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">2008</span>
+              <p>Zertifizierter Prüfer für Telc &amp; G.A.S.T. (DTZ A2/B1, Zertifikat Deutsch B1, Deutsch B2; seit 2022 auch Deutschtest für den Beruf DTB2)</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">Heute</span>
+              <p>DaF/DaZ-Dozent, Telc/G.A.S.T.-Prüfer und Sprachexperte in Borken, Westfalen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ LEISTUNGEN ══════════════════════════════════════ -->
+    <section class="leistungen" id="leistungen">
+      <div class="leistungen__inner">
+        <div class="leistungen__header">
+          <p class="leistungen__label">Angebot</p>
+          <h2 class="leistungen__title">Leistungen &amp; Methoden</h2>
+          <p class="leistungen__subtitle">
+            Sprache wird bei mir nie abstrakt — sie entsteht im Tun. Mein Unterricht
+            ist kommunikativ, handlungsorientiert und auf die konkreten Lebenssituationen
+            der Lernenden zugeschnitten.
+          </p>
+        </div>
+
+        <div class="leistungen__grid">
+          <div class="leistungen__card">
+            <p class="card__kategorie">Unterricht</p>
+            <h3 class="card__titel">DaF/DaZ-Kurse</h3>
+            <ul class="card__list">
+              <li>BAMF-zugelassene Integrationskurse (A2–B1)</li>
+              <li>Berufssprachkurse (B2, B2 Beruf)</li>
+              <li>Einzel- und Gruppenunterricht</li>
+              <li>Präsenz &amp; Online</li>
+            </ul>
+          </div>
+          <div class="leistungen__card">
+            <p class="card__kategorie">Fachsprache</p>
+            <h3 class="card__titel">Medizinerdeutsch</h3>
+            <ul class="card__list">
+              <li>Deutsch für ausländische Assistenzärzte</li>
+              <li>Fachsprachprüfungsvorbereitung</li>
+              <li>Berufsfeldbezogenes Lernen</li>
+              <li>Kommunikation im klinischen Alltag</li>
+            </ul>
+          </div>
+          <div class="leistungen__card">
+            <p class="card__kategorie">Prüfung</p>
+            <h3 class="card__titel">Zertifizierung &amp; Prüfung</h3>
+            <ul class="card__list">
+              <li>Telc-Prüfer: DTZ A2/B1, Deutsch B1 &amp; B2</li>
+              <li>G.A.S.T.-Prüfer</li>
+              <li>Deutschtest für den Beruf (DTB2)</li>
+              <li>Prüfungsvorbereitung auf allen Niveaus</li>
+            </ul>
+          </div>
+          <div class="leistungen__card">
+            <p class="card__kategorie">Text &amp; Sprache</p>
+            <h3 class="card__titel">Lektorat &amp; Redaktion</h3>
+            <ul class="card__list">
+              <li>Korrektorat &amp; Lektorat</li>
+              <li>Wissenschaftliches Schreiben</li>
+              <li>Redaktion (Handelsblatt, Bertelsmann u. a.)</li>
+              <li>Seminare: Korrigieren – Redigieren – Lektorieren</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ PUBLIKATIONEN ════════════════════════════════════ -->
+    <section class="publikationen" id="publikationen">
+      <div class="publikationen__inner">
+        <div class="publikationen__header">
+          <p class="pub__label">Wissenschaft &amp; Publikationen</p>
+          <h2 class="pub__title">Akademisches Profil</h2>
+          <p class="pub__subtitle">
+            Germanistische Forschung am Schnittpunkt von Natur, Sprache und Weltbild —
+            mit einem direkten Faden zur deutschsprachigen Universitätsgermanistik.
+          </p>
+        </div>
+        <div class="pub__grid">
+          <div class="pub__item">
+            <p class="pub__typ">Dissertation</p>
+            <p class="pub__name">„Karoline von Günderrode und Naturdenken um 1800"</p>
+            <p class="pub__details">
+              Dr. phil., Heinrich-Heine-Universität Düsseldorf, 1995.<br>
+              Beitrag zur literaturwissenschaftlichen Forschung der deutschen Frühromantik
+              am Schnittpunkt von Natur, Sprache und Weltbild.
+            </p>
+          </div>
+          <div class="pub__item">
+            <p class="pub__typ">Lehrveranstaltung</p>
+            <p class="pub__name">Seminare zur Naturlyrik der Goethezeit</p>
+            <p class="pub__details">
+              Germanistisches Seminar der HHU Düsseldorf, Lehrstuhl Prof. Dr. Herbert Anton, 1988.<br>
+              Wissenschaftliche Lehre in der Germanistik auf Universitätsniveau.
+            </p>
+          </div>
+          <div class="pub__item">
+            <p class="pub__typ">Internationale Weiterbildung</p>
+            <p class="pub__name">Internationales Deutschlehrerkolleg der Robert-Bosch-Stiftung</p>
+            <p class="pub__details">
+              Wissenschaftliche Leitung des vierwöchigen Programms für internationale
+              Deutschlehrkräfte, Akademie Klausenhof, Dingden, 1999.
+            </p>
+          </div>
+          <div class="pub__item">
+            <p class="pub__typ">Redaktion &amp; Verlag</p>
+            <p class="pub__name">Bücher und Printprodukte zur Welt- und Zeitgeschichte</p>
+            <p class="pub__details">
+              Freischaffender Redakteur für Bertelsmann Verlag, Chronik Verlag Gütersloh,
+              Harenberg Verlag Dortmund und Verlagsgruppe Handelsblatt, 1996–2005.
+            </p>
+          </div>
+          <div class="pub__item">
+            <p class="pub__typ">Publizistik</p>
+            <p class="pub__name">„Düsseldorfer Musikzeitung"</p>
+            <p class="pub__details">
+              Mitherausgeber und verantwortlicher Redakteur der monatlich erscheinenden
+              Illustrierten, Düsseldorf, 1981–1982.
+            </p>
+          </div>
+          <div class="pub__item">
+            <p class="pub__typ">Fachdidaktik</p>
+            <p class="pub__name">Seminare „Korrigieren – Redigieren – Lektorieren"</p>
+            <p class="pub__details">
+              Entwicklung und Durchführung von Seminarsequenzen für den Ernst Klett Verlag
+              für Wirtschafts- und Bildungsservice GmbH, Düsseldorf, ab 1995.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ KONTAKT ══════════════════════════════════════════ -->
+    <section class="kontakt" id="kontakt">
+      <div class="kontakt__inner">
+        <div class="kontakt__text">
+          <p class="kontakt__label">Kontakt</p>
+          <h2 class="kontakt__title">
+            Bereit für den<br><em>nächsten Schritt?</em>
+          </h2>
+          <p class="kontakt__lead">
+            Ob Sie einen Integrationskurs beginnen, eine Prüfung ablegen oder gezielten
+            Sprachunterricht suchen — ich freue mich auf Ihre Nachricht und melde mich
+            zeitnah bei Ihnen.
+          </p>
+
+          <div class="kontakt__info">
+            <div class="kontakt__row">
+              <span class="kontakt__icon">✉</span>
+              <a href="mailto:redwest@web.de">redwest@web.de</a>
+            </div>
+            <div class="kontakt__row">
+              <span class="kontakt__icon">☏</span>
+              <a href="tel:+4917782010541">+49 177 8201054</a>
+            </div>
+            <div class="kontakt__row">
+              <span class="kontakt__icon">⊙</span>
+              <span>Lange Stiege 2, 46325 Borken</span>
+            </div>
+          </div>
+
+          <div class="kontakt__preise">
+            <p class="preise__title">Honorar</p>
+            <p>Konditionen auf Anfrage — je nach Format und Umfang</p>
+            <p>Kennenlerngespräch — <strong>kostenlos</strong></p>
+          </div>
+        </div>
+
+        <form
+          class="kontakt__form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <!-- Hinweis: WEB3FORMS_KEY unter https://web3forms.com beantragen und hier eintragen -->
+          <input type="hidden" name="access_key" value="IHR_WEB3FORMS_KEY_HIER" />
+          <input type="hidden" name="redirect" value="https://sandhanwestphal-blip.github.io/Wolfgang/danke" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="form__group">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Ihr Name" />
+          </div>
+          <div class="form__group">
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" required placeholder="ihre@email.de" />
+          </div>
+          <div class="form__group">
+            <label for="nachricht">Nachricht</label>
+            <textarea id="nachricht" name="message" rows="5" required placeholder="Wie kann ich Ihnen helfen?"></textarea>
+          </div>
+
+          <button type="submit" class="form__btn">Nachricht senden</button>
+
+          <p class="form__hinweis">
+            Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
+          </p>
+        </form>
+      </div>
+    </section>
+
   </main>
-  <Footer />
-</Layout>
+
+  <!-- ═══ FOOTER ══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__name">Dr. Wolfgang Westphal</p>
+      <p class="footer__beruf">Germanist &amp; DaF/DaZ-Experte · Borken, Westfalen</p>
+      <nav class="footer__nav">
+        <a href="mailto:redwest@web.de">redwest@web.de</a>
+        <a href="tel:+4917782010541">+49 177 8201054</a>
+      </nav>
+      <p class="footer__copy">© 2026 Dr. Wolfgang Westphal</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation scroll shadow
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!open));
+      mobileMenu.classList.toggle('is-open', !open);
+      mobileMenu.setAttribute('aria-hidden', String(open));
+    });
+
+    window.closeMobile = () => {
+      burger.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('is-open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    };
+
+    // Scroll-reveal with IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.style.opacity = '1';
+          el.target.style.transform = 'translateY(0)';
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.leistungen__card, .pub__item, .about__entry').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
