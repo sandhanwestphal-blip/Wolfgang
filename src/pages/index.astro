@@ -815,8 +815,12 @@
               <p>Dozent am Germanistischen Seminar der HHU Düsseldorf (Lehrstuhl Prof. Dr. Herbert Anton), Seminare zur Naturlyrik der Goethezeit</p>
             </div>
             <div class="about__entry">
-              <span class="about__year">1995</span>
-              <p>Promotion zum Dr. phil. (HHU Düsseldorf): „Karoline von Günderrode und Naturdenken um 1800"; Ausbildung zum Fachzeitschriften-Redakteur beim Ernst Klett Verlag</p>
+              <span class="about__year">1993</span>
+              <p>Promotion zum Dr. phil. (HHU Düsseldorf): „Karoline von Günderrode und Naturdenken um 1800"</p>
+            </div>
+            <div class="about__entry">
+              <span class="about__year">1994</span>
+              <p>Ausbildung zum Fachzeitschriften-Redakteur beim Ernst Klett Verlag</p>
             </div>
             <div class="about__entry">
               <span class="about__year">1996</span>
@@ -828,7 +832,7 @@
             </div>
             <div class="about__entry">
               <span class="about__year">2005</span>
-              <p>Dozent und Kursleiter an der VHS Bocholt und beim DRK Borken für BAMF-zugelassene Integrations- und Berufssprachkurse (A2 bis B2 Beruf)</p>
+              <p>Dozent und Kursleiter an der VHS Bocholt und beim DRK Borken für BAMF-zugelassene Integrations- und Berufssprachkurse</p>
             </div>
             <div class="about__entry">
               <span class="about__year">2008</span>
@@ -836,7 +840,7 @@
             </div>
             <div class="about__entry">
               <span class="about__year">Heute</span>
-              <p>DaF/DaZ-Dozent, Telc/G.A.S.T.-Prüfer und Sprachexperte in Borken, Westfalen</p>
+              <p>DaF/DaZ-Dozent, Telc/G.A.S.T.-Prüfer</p>
             </div>
           </div>
         </div>
@@ -863,8 +867,9 @@
             <p class="card__kategorie">Unterricht</p>
             <h3 class="card__titel">DaF/DaZ-Kurse</h3>
             <ul class="card__list">
-              <li>BAMF-zugelassene Integrationskurse (A2–B1)</li>
-              <li>Berufssprachkurse (B2, B2 Beruf)</li>
+              <li>Integrationskurse A2/B1</li>
+              <li>Deutschkurse A1 bis B2</li>
+              <li>Berufssprachkurse</li>
               <li>Einzel- und Gruppenunterricht</li>
               <li>Präsenz &amp; Online</li>
             </ul>
@@ -883,20 +888,8 @@
             <p class="card__kategorie">Prüfung</p>
             <h3 class="card__titel">Zertifizierung &amp; Prüfung</h3>
             <ul class="card__list">
-              <li>Telc-Prüfer: DTZ A2/B1, Deutsch B1 &amp; B2</li>
-              <li>G.A.S.T.-Prüfer</li>
-              <li>Deutschtest für den Beruf (DTB2)</li>
-              <li>Prüfungsvorbereitung auf allen Niveaus</li>
-            </ul>
-          </div>
-          <div class="leistungen__card">
-            <p class="card__kategorie">Text &amp; Sprache</p>
-            <h3 class="card__titel">Lektorat &amp; Redaktion</h3>
-            <ul class="card__list">
-              <li>Korrektorat &amp; Lektorat</li>
-              <li>Wissenschaftliches Schreiben</li>
-              <li>Redaktion (Handelsblatt, Bertelsmann u. a.)</li>
-              <li>Seminare: Korrigieren – Redigieren – Lektorieren</li>
+              <li>Telc Prüfer (A2/B1, Zertifikat Deutsch B1, B2, Deutschtest für den Beruf, DTB2)</li>
+              <li>G.A.S.T. Prüfer (DTZ A2/B1)</li>
             </ul>
           </div>
         </div>
@@ -1013,7 +1006,6 @@
           action="https://api.web3forms.com/submit"
           method="POST"
         >
-          <!-- Hinweis: WEB3FORMS_KEY unter https://web3forms.com beantragen und hier eintragen -->
           <input type="hidden" name="access_key" value="IHR_WEB3FORMS_KEY_HIER" />
           <input type="hidden" name="redirect" value="https://sandhanwestphal-blip.github.io/Wolfgang/danke" />
           <input type="checkbox" name="botcheck" style="display:none" />
@@ -1056,13 +1048,11 @@
   </footer>
 
   <script>
-    // Navigation scroll shadow
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('nav--scrolled', window.scrollY > 20);
     });
 
-    // Mobile menu
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -1079,7 +1069,6 @@
       mobileMenu.setAttribute('aria-hidden', 'true');
     };
 
-    // Scroll-reveal with IntersectionObserver
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
         if (el.isIntersecting) {
